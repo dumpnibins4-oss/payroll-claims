@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
 
 ?>
 
@@ -17,18 +17,18 @@
     <body>
         <div class="flex flex-col items-center justify-center w-screen h-screen bg-stone-200">
             <h1 class="fixed top-3 left-3 text-4xl font-extrabold text-pink-400 tracking-wide">LA ROSE NOIRE</h1>
-            <div class="flex flex-col items-center justify-start p-8 w-100 bg-white rounded-4xl shadow-lg shadow-black/20">
+            <div class="fixed bottom-3 left-3 coin-wrapper">
+                <div class="coin-spin flex w-14 h-14 items-center justify-center rounded-full bg-gradient-to-br from-zinc-200 via-zinc-400 to-zinc-300 shadow-none border-3 border-zinc-400">
+                    <i class="fa-solid fa-peso-sign text-2xl bg-gradient-to-br from-green-400 to-green-600 bg-clip-text text-transparent"></i>
+                </div>
+                <div class="coin-shadow"></div>
+            </div>
+            <div class="flex flex-col items-center justify-start py-8 px-10 w-100 bg-white rounded-[2rem] shadow-lg shadow-black/20 gap-5">
                 <!-- Logo & Title -->
-                <div class="flex flex-col w-full h-auto items-center justify-center gap-2 mb-8">
-                    <div class="coin-wrapper">
-                        <div class="coin-spin flex w-14 h-14 items-center justify-center rounded-full bg-gradient-to-br from-zinc-200 via-zinc-400 to-zinc-300 shadow-none border-3 border-zinc-400">
-                            <i class="fa-solid fa-peso-sign text-2xl bg-gradient-to-br from-pink-400 to-pink-600 bg-clip-text text-transparent"></i>
-                        </div>
-                        <div class="coin-shadow"></div>
-                    </div>
-                    <div class="flex flex-col items-center justify-center w-full h-auto">
-                        <h2 class="text-2xl font-extrabold bg-gradient-to-br from-pink-400 to-pink-600 bg-clip-text text-transparent">Payroll Claims System</h2>
-                        <h5 class="text-sm text-zinc-400 font-medium">Please sign in to continue</h5>
+                <div class="flex flex-col w-full h-auto items-center justify-center">
+                    <div class="flex flex-col items-center justify-center w-full h-auto gap-2">
+                        <h2 class="text-2xl font-bold text-black">Payroll Claims</h2>
+                        <h5 class="text-sm text-zinc-400 font-medium text-center">Please enter your details to sign in to your account</h5>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
                     <!-- Username -->
                     <div class="flex flex-col gap-1.5">
                         <label class="text-xs font-semibold text-zinc-400 uppercase tracking-widest">Username</label>
-                        <div class="flex items-center bg-stone-100 border border-zinc-200 rounded-xl px-4 gap-3 focus-within:border-pink-300 transition-colors duration-200">
+                        <div class="flex items-center bg-white border border-zinc-200 rounded-xl px-4 gap-3 focus-within:border-green-300 transition-colors duration-200">
                             <i class="fa-solid fa-user text-zinc-500 text-sm"></i>
                             <input
                                 type="text"
@@ -52,7 +52,7 @@
                     <!-- Password -->
                     <div class="flex flex-col gap-1.5">
                         <label class="text-xs font-semibold text-zinc-400 uppercase tracking-widest">Password</label>
-                        <div class="flex items-center bg-stone-100 border border-zinc-200 rounded-xl px-4 gap-3 focus-within:border-pink-300 transition-colors duration-200">
+                        <div class="flex items-center bg-white border border-zinc-200 rounded-xl px-4 gap-3 focus-within:border-green-300 transition-colors duration-200">
                             <div class="flex flex-row items-center justify-start h-auto flex-1 gap-3">
                                 <i class="fa-solid fa-lock text-zinc-500 text-sm"></i>
                                 <input
@@ -78,14 +78,13 @@
                     <button
                         id="submit-button"
                         type="submit"
-                        class="mt-4 w-full py-3 rounded-xl bg-gradient-to-br from-pink-300 to-pink-500 text-white font-bold text-md tracking-wide hover:translate-y-[-3px] hover:scale-101 hover:shadow-lg active:translate-y-[3px] active:scale-98 transition-all duration-200 shadow-md shadow-black/30 cursor-pointer flex items-center justify-center gap-2"
+                        class="mt-4 w-full py-2.5 rounded-xl bg-green-500 text-white font-medium text-md tracking-wide hover:translate-y-[-3px] hover:scale-101 hover:shadow-lg hover:shadow-green-500/30 hover:bg-green-600 active:translate-y-[3px] active:scale-98 transition-all duration-200 shadow-md shadow-black/30 cursor-pointer flex items-center justify-center gap-2"
                     >
-                        <i class="fa-solid fa-right-to-bracket"></i>
                         <span id="submit-label">Sign In</span>
                     </button>
                 </form>
                 <!-- Footer -->
-                <p class="mt-6 text-xs text-zinc-500">&copy; <?= date('Y') ?> Payroll Claims System. All rights reserved.</p>
+                <p class="text-xs text-zinc-500">&copy; <?= date('Y') ?> Payroll Claims System. All rights reserved.</p>
             </div>
         </div>
     </body>
@@ -126,7 +125,6 @@
             submitBtn.classList.remove('opacity-80', 'cursor-not-allowed')
             submitBtn.classList.add('hover:translate-y-[-3px]', 'hover:scale-101')
             submitBtn.innerHTML = `
-                <i class="fa-solid fa-right-to-bracket"></i>
                 <span>Sign In</span>
             `
         }
